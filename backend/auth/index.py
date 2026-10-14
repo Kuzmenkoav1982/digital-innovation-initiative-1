@@ -94,8 +94,12 @@ def _is_allowed_origin(origin: str) -> bool:
         return False
 
 
+_REQUEST_ORIGIN = {"value": None}
+
+
 def cors_headers(origin: str = None):
     """Strict CORS: deny-by-default. Без Allow-Credentials — auth через header, не cookies."""
+    origin = origin or _REQUEST_ORIGIN["value"]
     headers = {
         "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type, X-Session-Id",
@@ -302,6 +306,7 @@ def is_valid_email_format(email: str) -> bool:
 def handler(event: dict, context) -> dict:
     # CORS preflight — отдаём заголовки с учётом origin
     request_origin = event.get("headers", {}).get("Origin") or event.get("headers", {}).get("origin")
+    _REQUEST_ORIGIN["value"] = request_origin
     if event.get("httpMethod") == "OPTIONS":
         return {"statusCode": 200, "headers": cors_headers(request_origin), "body": ""}
 
