@@ -8,7 +8,6 @@ const URLS = {
   generate: "https://functions.poehali.dev/90160450-b2a6-44cd-8e78-089f457c619d",
   export: "https://functions.poehali.dev/9d47e96e-4b93-40c5-9d52-d87273385119",
   exportDocx: "https://functions.poehali.dev/e4caace1-0466-484f-907e-9e141db67523",
-  webSearch: "https://functions.poehali.dev/d68c20bc-5049-4096-a8bb-ae7a7f5afe57",
   search: "https://functions.poehali.dev/54999e08-24f7-478d-92d8-8d66785f0a00",
   mediaUpload: "https://functions.poehali.dev/c3f6a32b-87f2-4ebb-8954-ccbae46e81a3",
   education: "https://functions.poehali.dev/54faac64-7c7d-43d5-8590-e64e08067d56",
@@ -435,11 +434,6 @@ export const exportApi = {
     request(URLS.export, "/", "POST", { run_id: runId }),
   exportDocx: (runId: number) =>
     request(URLS.exportDocx, "/", "POST", { run_id: runId }),
-};
-
-export const webSearchApi = {
-  search: (query: string, taskId?: number) =>
-    request(URLS.webSearch, "/", "POST", { query, task_id: taskId }),
 };
 
 export const searchApi = {

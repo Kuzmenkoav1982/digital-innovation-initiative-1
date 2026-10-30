@@ -238,68 +238,6 @@ export const passportApi = {
     ppReq("/?action=save_notes", { method: "PUT", body: JSON.stringify({ content }) }),
 };
 
-const OPS_BASE = "https://functions.poehali.dev/7730f705-e699-49ac-9cda-1aafb13a0bad";
-
-async function opsReq(path: string, options: RequestInit = {}) {
-  const token = getAdminToken();
-  const res = await fetch(`${OPS_BASE}${path}`, {
-    ...options,
-    headers: { "Content-Type": "application/json", ...(token ? { "X-Admin-Token": token } : {}), ...(options.headers || {}) },
-  });
-  const data = await res.json().catch(() => ({}));
-  return { ok: res.ok, status: res.status, data };
-}
-
-export type OpsErrorSeverity = "low" | "medium" | "high" | "critical";
-export type OpsErrorStatus   = "open" | "investigating" | "muted" | "resolved";
-export type OpsAlertSeverity = "low" | "medium" | "high" | "critical";
-export type OpsAlertStatus   = "active" | "triggered" | "muted" | "resolved";
-export type OpsFlagStatus    = "active" | "planned" | "deprecated";
-
-export const opsApi = {
-  allErrors: () => opsReq("/?action=all&module=errors"),
-  addError:  (d: Record<string, unknown>) => opsReq("/?action=add_error",  { method: "POST", body: JSON.stringify(d) }),
-  updateError:(d: Record<string, unknown>) => opsReq("/?action=update_error",{ method: "PUT",  body: JSON.stringify(d) }),
-
-  allAlerts: () => opsReq("/?action=all&module=alerts"),
-  addAlert:  (d: Record<string, unknown>) => opsReq("/?action=add_alert",  { method: "POST", body: JSON.stringify(d) }),
-  updateAlert:(d: Record<string, unknown>) => opsReq("/?action=update_alert",{ method: "PUT",  body: JSON.stringify(d) }),
-
-  allFlags: () => opsReq("/?action=all&module=flags"),
-  addFlag:  (d: Record<string, unknown>) => opsReq("/?action=add_flag",   { method: "POST", body: JSON.stringify(d) }),
-  updateFlag:(d: Record<string, unknown>) => opsReq("/?action=update_flag", { method: "PUT",  body: JSON.stringify(d) }),
-  toggleFlag:(id: number)                 => opsReq("/?action=toggle_flag", { method: "PUT",  body: JSON.stringify({ id }) }),
-};
-
-const AI_CTX_BASE = "https://functions.poehali.dev/ae7057d8-becb-483d-9353-4858fadc5fbd";
-
-async function aiCtxReq(path: string) {
-  const token = getAdminToken();
-  const res = await fetch(`${AI_CTX_BASE}${path}`, {
-    headers: { "Content-Type": "application/json", ...(token ? { "X-Admin-Token": token } : {}) },
-  });
-  const data = await res.json().catch(() => ({}));
-  return { ok: res.ok, status: res.status, data };
-}
-
-export type AiCtxScope = "full" | "hq" | "project" | "passport";
-export type FreshnessStatus = "fresh" | "changed" | "never_exported";
-
-export type AiFreshness = {
-  status: FreshnessStatus;
-  changed_sections: string[];
-  last_exported_at: string | null;
-  last_exported_by: string | null;
-  last_hash: string | null;
-};
-
-export const aiContextApi = {
-  export: (scope: AiCtxScope = "full") =>
-    aiCtxReq(`/?action=export&format=json&scope=${scope}`),
-  status: (scope: AiCtxScope = "full") =>
-    aiCtxReq(`/?action=status&scope=${scope}`),
-};
-
 const TICKETS_BASE = "https://functions.poehali.dev/d5e57a3f-a793-4f65-849e-8f084619e51d";
 
 async function ticketsReq(path: string, options: RequestInit = {}) {

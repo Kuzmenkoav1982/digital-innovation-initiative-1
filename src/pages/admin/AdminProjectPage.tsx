@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback } from "react";
 import AdminShell from "@/components/admin/AdminShell";
 import Icon from "@/components/ui/icon";
 import { useToast } from "@/hooks/use-toast";
-import AiContextExporter from "@/components/admin/AiContextExporter";
 import {
   projectApi,
   type ProjectGapType,
@@ -291,7 +290,6 @@ export default function AdminProjectPage() {
               <p className="text-gray-500 text-sm mt-0.5">As-is → To-be, разрывы, конфликты, волны изменений</p>
             </div>
           </div>
-          <AiContextExporter defaultScope="project" />
         </div>
 
         {/* ── As-is / To-be ────────────────────────────────────────────────── */}

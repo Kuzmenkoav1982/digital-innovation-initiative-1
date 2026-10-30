@@ -3,7 +3,6 @@ import AdminShell from "@/components/admin/AdminShell";
 import Icon from "@/components/ui/icon";
 import { useToast } from "@/hooks/use-toast";
 import { passportApi, type PPModuleStatus, type PPModuleCategory, type PPEntityKind, type PPOverlapType, type PPOverlapStatus } from "@/lib/admin-api";
-import AiContextExporter from "@/components/admin/AiContextExporter";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 type Module = {
@@ -339,7 +338,6 @@ export default function AdminPassportPage() {
               <p className="text-gray-500 text-sm mt-0.5">Реестр модулей, сущностей, owners и связей платформы</p>
             </div>
           </div>
-          <AiContextExporter defaultScope="passport" />
         </div>
 
         {/* ── Overview cards ────────────────────────────────────────────────── */}
@@ -667,7 +665,6 @@ export default function AdminPassportPage() {
                     <LastUpdated at={notes.updated_at} by={notes.updated_by} />
                   )}
                   <div className="mt-4 pt-4 border-t border-gray-800">
-                    <AiContextExporter defaultScope="passport" variant="button" />
                   </div>
                 </>
               )}

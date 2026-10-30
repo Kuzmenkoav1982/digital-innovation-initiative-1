@@ -4,7 +4,6 @@ import AdminShell from "@/components/admin/AdminShell";
 import Icon from "@/components/ui/icon";
 import { hqApi, type HQGoalStatus, type HQIdeaStatus, type HQRiskImpact, type HQRiskStatus, type HQSummary } from "@/lib/admin-api";
 import { useToast } from "@/hooks/use-toast";
-import AiContextExporter from "@/components/admin/AiContextExporter";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 type Block = { title: string; content: string; updated_at: string; updated_by: string };
@@ -411,7 +410,6 @@ export default function AdminHQPage() {
             </div>
             <p className="text-gray-500 text-sm ml-12">Живая память проекта — видение, правила, решения, риски, идеи</p>
           </div>
-          <AiContextExporter defaultScope="hq" />
         </div>
 
         {/* ── Platform counters ───────────────────────────────────────────── */}

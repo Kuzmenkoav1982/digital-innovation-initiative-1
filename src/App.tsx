@@ -21,11 +21,7 @@ import AdminExecutionPage from "./pages/admin/AdminExecutionPage";
 import AdminHQPage from "./pages/admin/AdminHQPage";
 import AdminProjectPage from "./pages/admin/AdminProjectPage";
 import AdminPassportPage from "./pages/admin/AdminPassportPage";
-import AdminErrorsPage from "./pages/admin/AdminErrorsPage";
-import AdminAlertsPage from "./pages/admin/AdminAlertsPage";
-import AdminFlagsPage from "./pages/admin/AdminFlagsPage";
 import AdminTicketsPage from "./pages/admin/AdminTicketsPage";
-import AdminAutomationsPage from "./pages/admin/AdminAutomationsPage";
 import AdminContentPage from "./pages/admin/AdminContentPage";
 import AdminCompetenciesPage from "./pages/admin/AdminCompetenciesPage";
 import AdminAdoptionPage from "./pages/admin/AdminAdoptionPage";
@@ -147,11 +143,7 @@ const App = () => (
               <Route path="/admin/hq" element={<AdminRoute><AdminHQPage /></AdminRoute>} />
               <Route path="/admin/project" element={<AdminRoute><AdminProjectPage /></AdminRoute>} />
               <Route path="/admin/passport" element={<AdminRoute><AdminPassportPage /></AdminRoute>} />
-              <Route path="/admin/errors" element={<AdminRoute><AdminErrorsPage /></AdminRoute>} />
-              <Route path="/admin/alerts" element={<AdminRoute><AdminAlertsPage /></AdminRoute>} />
-              <Route path="/admin/flags" element={<AdminRoute><AdminFlagsPage /></AdminRoute>} />
               <Route path="/admin/tickets" element={<AdminRoute><AdminTicketsPage /></AdminRoute>} />
-              <Route path="/admin/automations" element={<AdminRoute><AdminAutomationsPage /></AdminRoute>} />
               <Route path="/admin/content" element={<AdminRoute><AdminContentPage /></AdminRoute>} />
               <Route path="/admin/competencies" element={<AdminRoute><AdminCompetenciesPage /></AdminRoute>} />
               <Route path="/admin/analytics/competency-map" element={<AdminRoute><AdminAdoptionPage /></AdminRoute>} />

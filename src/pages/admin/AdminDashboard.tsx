@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import AdminShell from "@/components/admin/AdminShell";
 import Icon from "@/components/ui/icon";
-import AiContextExporter from "@/components/admin/AiContextExporter";
 import { ticketsApi, contentApi } from "@/lib/admin-api";
 
 type Card = { label: string; icon: string; href: string; color: string; highlight?: boolean; badge?: string; badgeNote?: string };
@@ -18,9 +17,6 @@ const PLATFORM: Card[] = [
 ];
 
 const OPERATIONS: Card[] = [
-  { label: "Ошибки",     icon: "AlertTriangle", href: "/admin/errors",   color: "text-red-400" },
-  { label: "Алерты",     icon: "Bell",          href: "/admin/alerts",   color: "text-amber-400" },
-  { label: "Флаги",      icon: "ToggleRight",   href: "/admin/flags",    color: "text-violet-400" },
   { label: "Тикеты",     icon: "Ticket",        href: "/admin/tickets",  color: "text-sky-400" },
   { label: "Контент",    icon: "FileText",      href: "/admin/content",  color: "text-cyan-400" },
   { label: "Активность", icon: "Activity",      href: "/admin/activity", color: "text-orange-400" },
@@ -180,7 +176,6 @@ export default function AdminDashboard() {
               <span className="text-xs font-semibold text-gray-600 uppercase tracking-wider">AI-контекст</span>
             </div>
           </div>
-          <AiContextExporter defaultScope="full" variant="card" />
         </div>
       </div>
     </AdminShell>
